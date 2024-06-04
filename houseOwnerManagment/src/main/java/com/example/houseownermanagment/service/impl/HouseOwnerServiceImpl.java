@@ -24,7 +24,15 @@ public class HouseOwnerServiceImpl implements HouseOwnerService {
 
     @Override
     public Optional<HouseOwner> updateHouseOwner(HouseOwner houseOwner) {
-        return Optional.empty();
+
+       Optional<HouseOwner> houseOwnerFound = houseOwnerRepository.findHouseOwnerByHouseOwnerId(houseOwner.getHouseOwnerId());
+       if(houseOwnerFound.isPresent()){
+           houseOwnerFound.get().setFirstName(houseOwner.getFirstName());
+           houseOwnerFound.get().setLastName(houseOwner.getLastName());
+           houseOwnerFound.get().setPhoneNumber(houseOwner.getPhoneNumber());
+           houseOwnerFound.get().setHouses(houseOwner.getHouses());
+       }
+       return Optional.of(houseOwnerRepository.save(houseOwnerFound.get()));
     }
 
     @Override

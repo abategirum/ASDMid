@@ -25,7 +25,7 @@ public class HouseOwnerManagmentApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-
+        //add new owner
         HouseOwner newHouseOwner = new HouseOwner();
         newHouseOwner.setFirstName("John");
         newHouseOwner.setLastName("Doe");
@@ -49,6 +49,11 @@ public class HouseOwnerManagmentApplication implements CommandLineRunner {
         );
         newHouseOwner2.setHouses(house2);
         houseOwnerService.addHouseOwner(newHouseOwner2);
+
+
+        //update owner
+
+
 
 
         System.out.println(houseOwnerService.getAllHouseOwners());
